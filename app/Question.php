@@ -12,11 +12,12 @@ class Question extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function setTitleAttributes($value)
-    {
-        $this->attributes['title'] = $value;
-        $this->attributes['slug'] = str_slug($value, '-');
+    protected static function boot() {
+        parent::boot();
 
+        static::creating(function ($question) {
+            $question->slug = Str::slug($question->title);
+        });
     }
 
     public function getUrlAttribute()
