@@ -10683,5 +10683,6 @@ a.text-dark:focus {
 
 form.form-delete {
   display: inline;
+  padding-left: 4px;
 }
 
